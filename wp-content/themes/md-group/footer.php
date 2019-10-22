@@ -8,50 +8,46 @@
  *
  * @package md-group
  */
-
+global $redux_init;
 ?>
-		<footer class="footer">
-			<div class="container">
-				<div class="footer__wrap">
-					<div class="footer__menu">
-						<ul>
-							<li><a href="#mainpage">Главная</a></li>
-							<li><a href="#myCatalog">Каталог</a></li>
-							<li><a href="#myProduction">Производство и монтаж</a></li>
-							<li><a href="#our-work">Выполненные работы</a></li>
-						</ul>
-					</div>
-					<div class="footer__logo"><a href="/"><img src="<?php echo get_template_directory_uri();?>/img/@2x/logo2.png" alt="alt"></a></div>
-					<div class="footer__contact">
-						<p><a href="#callback" class="popup-with-zoom-anim">Заказать звонок</a></p>
-						<span><img src="<?php echo get_template_directory_uri();?>/img/phone_footer.svg" alt="alt"><a href="tel:+78122090746">+7 812 209-07-46</a></span>
-					</div>
-				</div>
-				
+<footer class="footer">
+	<div class="container">
+		<div class="footer__wrap">
+			<div class="footer__menu">
+				<ul>
+					<li><a href="#mainpage"><?php if($redux_init['menu_footer_link1']) { ?><?php echo esc_attr($redux_init['menu_footer_link1']) ?><?php } ?></a></li>
+					<li><a href="#myCatalog"><?php if($redux_init['menu_footer_link2']) { ?><?php echo esc_attr($redux_init['menu_footer_link2']) ?><?php } ?></a></li>
+					<li><a href="#myProduction"><?php if($redux_init['menu_footer_link3']) { ?><?php echo esc_attr($redux_init['menu_footer_link3']) ?><?php } ?></a></li>
+					<li><a href="#our-work"><?php if($redux_init['menu_footer_link4']) { ?><?php echo esc_attr($redux_init['menu_footer_link4']) ?><?php } ?></a></li>
+				</ul>
 			</div>
-<div class="footer__copy"><a target="_blank" href="http://cropmedia.ru/">cropmedia.ru, 2019</a></div>
-		</footer>
 
-		<div class="hidden">
+			<div class="footer__logo"><a href="<?php echo home_url("/"); ?>"><?php if($redux_init['footer_logo']['url']){ ?>
+				<img src="<?php echo esc_url($redux_init['footer_logo']['url']); ?>" alt="MD-Group" />			
+				<?php } ?></a></div>
+				<div class="footer__contact">
+					<p><?php if($redux_init['footer_call']) { ?><a href="#callback" class="popup-with-zoom-anim">
+						<?php echo esc_attr($redux_init['footer_call']) ?>
+					</a><?php } ?></p>
+					<span>
+						<?php if($redux_init['footer_phone_icon']['url']){ ?>
+							<img src="<?php echo esc_url($redux_init['footer_phone_icon']['url']); ?>" alt="" />			
+						<?php } ?>
+						<a href="tel:<?php if($redux_init['footer_phone_link']) { ?><?php echo esc_attr($redux_init['footer_phone_link']) ?><?php } ?>">
+							<?php if($redux_init['footer_phone_number']) { ?><?php echo esc_attr($redux_init['footer_phone_number']) ?><?php } ?></span></a>
+						</a>
 
-			<form class="form popup-form callback zoom-anim-dialog" id="callback">
-
-				<div class="success">Спасибо за заявку! <br/>
-				Наши менеджеры свяжутся с вами в ближайшее время.</div>
-
-				<!-- Hidden Required Fields -->
-				<h3 class="h3">Отправить заявку</h3>
-				<input type="text" name="Имя" placeholder="Ваше имя:">
-				<input type="text" name="Телефон" placeholder="Телефон:" required>
-				<input type="text" name="Комментарий" placeholder="Комментарий:">
-				<div class="text-center">
-					<button class="btn btn--yellow">Отправить</button>
-					<p class="form__p">Нажимая кнопку, вы соглашаетесь на обработку персональных данных и соглашаетесь с политикой конфиденциальности.</p>
+					</span>
 				</div>
-				<input class="formname" type="hidden" name=""> 
-			</form>
+			</div>
+
 		</div>
+		<div class="footer__copy"><a target="_blank" href="http://cropmedia.ru/">cropmedia.ru, 2019</a></div>
+	</footer>
+	<div class="hidden">
+		<?php if($redux_init['my_form']) { ?><?php echo do_shortcode( $redux_init['my_form']	); ?><?php } ?>
 
+	</div> 
 
-	</body>
-	</html>
+</body>
+</html>

@@ -156,6 +156,19 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Redux theme option
+ */
+require get_template_directory() . '/inc/redux-option.php';
+
+
+/**
+ * Register post-types
+ */
+require get_template_directory() . '/inc/post-types.php';
+
+
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
